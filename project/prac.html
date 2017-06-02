@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+body
+{
+    background: black;
+}
+
+canvas
+{
+      background: white;
+			padding: 0;
+			margin: auto;
+			display: block;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+}
+</style>
+</head>
+<body onload="main()">
+  <canvas id="myCanvas" width="1280" height="720">
+
+	</canvas>
+<script>
+
+var something;
+
+function main()
+{
+    canvas.setObj();
+    something = new Rectangle(30, 30, "red", 10, 120);
+    alert(canvas.obj.width);
+    alert(canvas.obj.height);
+    var timer = setInterval(changeFrame, 20);
+}
+
+var canvas = {
+
+    setObj : function () {
+        this.obj = document.getElementById("myCanvas").getContext("2d");
+    },
+
+    getObj : function () {
+        return this.obj;
+    },
+
+    clean : function() {
+        this.obj.clearRect(0, 0, this.obj.width, this.obj.height);
+    }
+}
+
+function Rectangle(width, height, color, x, y)
+{
+    this.width = width;
+    this.height = height;
+    this.x = x;
+    this.y = y;
+    this.generate = function(){
+
+      ctx = canvas.getObj();
+      ctx.fillStyle = color;
+      ctx.fillRect(this.x, this.y, this.width, this.height);
+
+    }
+}
+
+function changeFrame()
+{
+    canvas.clean();
+    something.x += 1;
+    something.generate();
+}
+
+/*
+
+function vision(x, y, address)
+{
+    this.image = new Image();
+    this.image.src = address;
+    this.x = x;
+    this.y = y;
+    ctx = myGameArea.context;
+    ctx.drawImage(this.image, this.x, this.y);
+
+}*/
+
+</script>
+
+</body>
+</html>
