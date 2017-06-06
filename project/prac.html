@@ -28,13 +28,22 @@ canvas
 	</canvas>
 <script>
 
-var something;
+var background;
+var dialog;
 
 function main()
 {
     canvas.setThisObj();
-    something = new Rectangle(30, 30, "red", 10, 120);
+    background = new vision("source/sky.png", 0, 0);
+    dialog = new vision("source/dialog1.png", 650, 680);
     var timer = setInterval(changeFrame, 20);
+}
+
+function changeFrame()
+{
+    canvas.cleanThisObj();
+    background.generate();
+    dialog.generate();
 }
 
 var canvas = {
@@ -54,40 +63,19 @@ var canvas = {
     }
 }
 
-function Rectangle(width, height, color, x, y)
-{
-    this.width = width;
-    this.height = height;
-    this.x = x;
-    this.y = y;
-    this.generate = function(){
-
-      ctx = canvas.getThisObj();
-      ctx.fillStyle = color;
-      ctx.fillRect(this.x, this.y, this.width, this.height);
-
-    }
-}
-
-function changeFrame()
-{
-    canvas.cleanThisObj();
-    something.x += 1;
-    something.generate();
-}
-
-/*
-
-function vision(x, y, address)
+function vision(address, x, y)
 {
     this.image = new Image();
     this.image.src = address;
     this.x = x;
     this.y = y;
-    ctx = myGameArea.context;
-    ctx.drawImage(this.image, this.x, this.y);
+    this.generate = function(){
 
-}*/
+      ctx = canvas.getThisObj();
+      ctx.drawImage(this.image,this.x,this.y);
+
+    }
+}
 
 </script>
 
