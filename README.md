@@ -1,73 +1,8 @@
-<!DOCTYPE html>
 
-<html lang = "zh-TW">
+我是鍾宇傑
 
-<head>
+專題的程式碼在project資料夾的result.html
 
-	<title>專題</title>
-	<meta charset = "utf-8">
-	
-	<style>
-		
-		body
-		{
-			background: black;
-		}
-		
-		img
-		{
-			width: 15%;
-			height: 15%;
-		}
-		
-		canvas
-		{
-			background: white;
-			padding: 0;
-			margin: auto;
-			display: block;
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			
-		}
-		
-	</style>
-	
-	<script type="text/javascript">
+而prac.html檔是練習紀錄
 
-		window.onload = function() {
-			var canvas = document.getElementById("myCanvas");
-			var ctx = canvas.getContext("2d"); 
-			var img = new Image();   	
-			img.onload = function(){
-				ctx.drawImage(img, 0, 0);
-			};	
-			img.src = 'source/sky.png'; // Set source path
-			
-			var dialog = new Image();   	
-			dialog.onload = function(){
-				ctx.drawImage(dialog, 520, 650);
-			};	
-			dialog.src = 'source/dialog3.png'; // Set source path
-		}
-		
-	</script>
-
-</head>
-
-<body>
-	
-	<img src = "source/title.png">
-	
-	</img>
-	<canvas id="myCanvas" width="1280" height="720">
-	
-	</canvas>
-	
-</body>
-
-</html>
-
+目前的目標是做出：在canvas中，滑鼠左鍵點擊或鍵盤enter後，能變換canvas畫面所顯示的對話文字(.png)，要能連續輸入和輸出。
