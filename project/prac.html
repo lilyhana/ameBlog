@@ -32,24 +32,24 @@ var something;
 
 function main()
 {
-    canvas.setObj();
+    canvas.setThisObj();
     something = new Rectangle(30, 30, "red", 10, 120);
-    alert(canvas.obj.width);
-    alert(canvas.obj.height);
     var timer = setInterval(changeFrame, 20);
 }
 
 var canvas = {
 
-    setObj : function () {
+    setThisObj : function () {
         this.obj = document.getElementById("myCanvas").getContext("2d");
+        this.obj.width = document.getElementById("myCanvas").getAttribute("width");
+        this.obj.height = document.getElementById("myCanvas").getAttribute("height");
     },
 
-    getObj : function () {
+    getThisObj : function () {
         return this.obj;
     },
 
-    clean : function() {
+    cleanThisObj : function() {
         this.obj.clearRect(0, 0, this.obj.width, this.obj.height);
     }
 }
@@ -62,7 +62,7 @@ function Rectangle(width, height, color, x, y)
     this.y = y;
     this.generate = function(){
 
-      ctx = canvas.getObj();
+      ctx = canvas.getThisObj();
       ctx.fillStyle = color;
       ctx.fillRect(this.x, this.y, this.width, this.height);
 
@@ -71,7 +71,7 @@ function Rectangle(width, height, color, x, y)
 
 function changeFrame()
 {
-    canvas.clean();
+    canvas.cleanThisObj();
     something.x += 1;
     something.generate();
 }
